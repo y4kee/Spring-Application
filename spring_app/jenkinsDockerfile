@@ -1,0 +1,9 @@
+# Dockerfile for Jenkins with Docker Compose
+FROM jenkins/jenkins:lts
+
+USER root
+RUN apt-get update && \
+    apt-get install -y docker-compose && \
+    rm -rf /var/lib/apt/lists/*
+
+USER jenkins

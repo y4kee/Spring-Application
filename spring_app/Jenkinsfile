@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'link to your github project', branch: 'main', credentialsId: 'git_token'
+            }
+        }
+        
+        stage('Stop Docker Images') {
+            steps {
+                script {
+                    sh """
+                    if [ -z \$(docker ps | grep mysqldb) ]
+                    then
+                        echo "Empty"
+                    else
+                        docker-compose -f docker-compose.yml down
+                    fi
+                    
+                    """
+                }
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                script {
+                    sh 'docker-compose -f docker-compose.yml build'
+                }
+            }
+        }
+        stage('Deploy Containers') {
+            steps {
+                script {              
+                    sh 'docker-compose -f docker-compose.yml up -d'
+                }
+            }
+        }
+    }
+    post {
+        always { 
+            cleanWs()
+        }
+    }
+}
