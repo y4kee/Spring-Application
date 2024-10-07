@@ -4,11 +4,8 @@ CREATE TABLE IF NOT EXISTS persons(
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT  INTO persons(name) VALUES('Amila');
-INSERT  INTO persons(name) VALUES('Gosha');
+INSERT  INTO persons(name) VALUES('Nastya');
 INSERT  INTO persons(name) VALUES('Maksym');
-INSERT  INTO persons(name) VALUES('Valer4ik');
-INSERT  INTO persons(name) VALUES('Stepan4ik');
-INSERT  INTO persons(name) VALUES('Petroo228');
-INSERT  INTO persons(name) VALUES('Gleb');
-INSERT  INTO persons(name) VALUES('Kiryll');
+INSERT  INTO persons(name) VALUES('Andriy');
+INSERT  INTO persons(name) VALUES('Dasha');
+INSERT  INTO persons(name) VALUES('Masha');
